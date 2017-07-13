@@ -38,7 +38,7 @@ tic(ABA_observers <- all_ebird %>%
          ALL_SPECIES_REPORTED, DURATION_MINUTES, EFFORT_DISTANCE_KM, LATITUDE, LONGITUDE,
          COUNTRY, COUNTY, STATE, PROTOCOL_TYPE) %>%
   distinct() %>%
-  filter(OBSERVATION_DATE > "2015-06-01") %>%
+  filter(OBSERVATION_DATE > "2014-01-01") %>%
   filter(OBSERVER_ID %in% ABA_rare_observers) %>%
   collect(n=Inf))
 toc()
@@ -48,7 +48,7 @@ tic(state_observers <- all_ebird %>%
          ALL_SPECIES_REPORTED, DURATION_MINUTES, EFFORT_DISTANCE_KM, LATITUDE, LONGITUDE,
          COUNTRY, COUNTY, STATE, PROTOCOL_TYPE) %>%
   distinct() %>%
-  filter(OBSERVATION_DATE > "2015-06-01") %>%
+  filter(OBSERVATION_DATE > "2014-01-01") %>%
   filter(OBSERVER_ID %in% state_rare_observers) %>%
   collect(n=Inf))
 toc()
