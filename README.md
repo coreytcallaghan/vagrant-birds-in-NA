@@ -4,7 +4,7 @@
 quantify the number of rare birds and the numbers of birdwatchers who twitched them
 
 ### Objective 2.
-estimate overall expenditures of the birders who twitched the rare birds
+probably will use 'distance travelled' and 'number of birders' as 'simple measures of value' (sensu Booth et al. 2011)
 
 ### Objective 3.
 investigate whether vagrants were preferentially submitted to a broad-scale citizen science database
