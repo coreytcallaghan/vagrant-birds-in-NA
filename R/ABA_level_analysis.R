@@ -1,7 +1,6 @@
 ## setwd("H:/Dissertation/Dissertation Chapters/Data Chapters/Vagrant birds in birdwatching/vagrant-birds-in-NA")
 
 ## packages
-library(lubridate)
 library(dplyr)
 library(readr)
 library(ggplot2)
@@ -58,7 +57,7 @@ ABA_observation_summary <- ABA_2016_rarities %>%
             first_ebird_date=Mode(first_ebird_date),
             bird_lat=mean(LATITUDE),
             bird_long=mean(LONGITUDE)) %>%
-  mutate(first_observer_date=as.Date(first_ebird_date)-360) %>%
+  mutate(first_observer_date=as.Date(first_ebird_date)-180) %>%
   inner_join(., ABA_2016_rarities, by=c("COMMON_NAME", "STATE_PROVINCE")) %>%
   group_by(COMMON_NAME, STATE_PROVINCE) %>%
   mutate(observers=list(OBSERVER_ID)) %>%
@@ -74,7 +73,7 @@ ABA_observation_summary$Index <- 1:nrow(ABA_observation_summary)
 ## calls a function: "return_observer_data"
 observer_coords <- ABA_observation_summary %>%
   group_by(Index) %>%
-  do(lists=return_observer_data(.)) %>%
+  do(lists=return_observer_coords(.)) %>%
   unnest(., lists)
 
 ## calculate the number of times a birder saw a specific bird
