@@ -1,4 +1,4 @@
-## setwd("H:/Dissertation/Dissertation Chapters/Data Chapters/Vagrant birds in birdwatching/Github")
+## setwd("H:/Dissertation/Dissertation Chapters/Data Chapters/Vagrant birds in birdwatching/vagrant-birds-in-NA")
 
 library(RSQLite)
 library(lubridate)
@@ -25,7 +25,7 @@ vagrants_USA_ABA.selection <- vagrant_birds_2016 %>%
 
 vagrants_USA_ABA <- usa %>%
   select(GLOBAL_UNIQUE_IDENTIFIER, COMMON_NAME, OBSERVER_ID, LOCALITY_ID, COUNTRY,
-         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER) %>%
+         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE) %>%
   filter(STATE_PROVINCE %in% vagrants_USA_ABA.selection$state_prov) %>%
   filter(COUNTY %in% vagrants_USA_ABA.selection$county) %>%
   filter(COMMON_NAME %in% vagrants_USA_ABA.selection$species) %>%
@@ -38,7 +38,7 @@ vagrants_CAN_ABA.selection <- vagrant_birds_2016 %>%
 
 vagrants_CAN_ABA <- can %>%
   select(GLOBAL_UNIQUE_IDENTIFIER, COMMON_NAME, OBSERVER_ID, LOCALITY_ID, COUNTRY,
-         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER) %>%
+         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE) %>%
   filter(STATE_PROVINCE %in% vagrants_CAN_ABA.selection$state_prov) %>%
   filter(COMMON_NAME %in% vagrants_CAN_ABA.selection$species) %>%
   collect(n=Inf)
@@ -64,7 +64,7 @@ state_level_vagrants_CAN <- vagrant_birds_2016 %>%
 
 vagrants_CAN_state <- can %>%
   select(GLOBAL_UNIQUE_IDENTIFIER, COMMON_NAME, OBSERVER_ID, LOCALITY_ID, COUNTRY,
-         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER) %>%
+         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE) %>%
   filter(STATE_PROVINCE %in% state_level_vagrants_CAN$state_prov) %>%
   filter(COMMON_NAME %in% state_level_vagrants_CAN$species) %>%
   collect(n=Inf)
@@ -83,7 +83,7 @@ state_level_vagrants_USA <-  vagrant_birds_2016 %>%
 
 vagrants_USA_state <- usa %>%
   select(GLOBAL_UNIQUE_IDENTIFIER, COMMON_NAME, OBSERVER_ID, LOCALITY_ID, COUNTRY,
-         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER) %>%
+         LATITUDE, LONGITUDE, STATE_PROVINCE, COUNTY, SAMPLING_EVENT_IDENTIFIER, OBSERVATION_DATE) %>%
   filter(STATE_PROVINCE %in% state_level_vagrants_USA$state_prov) %>%
   filter(COUNTY %in% state_level_vagrants_USA$county) %>%
   filter(COMMON_NAME %in% state_level_vagrants_USA$species) %>%
