@@ -97,6 +97,7 @@ setDT(ABA_analysis)[, distance_travelled.km := distGeo(matrix(c(bird_long, bird_
 ABA_analysis$Index <- NULL
 ABA_analysis$observers <- NULL
 ABA_analysis$first_observer_date <- NULL
+ABA_analysis$scale <- NULL
 
 
 
