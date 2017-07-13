@@ -1,4 +1,4 @@
-## setwd("H:/Dissertation/Dissertation Chapters/Data Chapters/Vagrant birds in birdwatching/Github")
+## setwd("H:/Dissertation/Dissertation Chapters/Data Chapters/Vagrant birds in birdwatching/vagrant-birds-in-NA")
 
 ### Packages
 library(dplyr)
@@ -17,12 +17,12 @@ load("Data/rarity_data.RData")
 
 ## needs to be a character string to select from another database
 ABA_rare_observers <- ABA_2016_rarities %>%
-  select(OBSERVER_ID) %>%
+  dplyr::select(OBSERVER_ID) %>%
   distinct() %>%
   .$OBSERVER_ID
 
 state_rare_observers <- state_2016_rarities %>%
-  select(OBSERVER_ID) %>%
+  dplyr::select(OBSERVER_ID) %>%
   distinct() %>%
   .$OBSERVER_ID
 
@@ -34,7 +34,7 @@ all_ebird <- tbl(ebird_db, "ebird")
 
 ### Now can select and subset to necessary information for the observers subsetted above
 tic(ABA_observers <- all_ebird %>%
-  select(OBSERVATION_DATE, OBSERVER_ID, LOCALITY_ID, SAMPLING_EVENT_IDENTIFIER,
+  dplyr::select(OBSERVATION_DATE, OBSERVER_ID, LOCALITY_ID, SAMPLING_EVENT_IDENTIFIER,
          ALL_SPECIES_REPORTED, DURATION_MINUTES, EFFORT_DISTANCE_KM, LATITUDE, LONGITUDE,
          COUNTRY, COUNTY, STATE, PROTOCOL_TYPE) %>%
   distinct() %>%
@@ -44,7 +44,7 @@ tic(ABA_observers <- all_ebird %>%
 toc()
 
 tic(state_observers <- all_ebird %>%
-  select(OBSERVATION_DATE, OBSERVER_ID, LOCALITY_ID, SAMPLING_EVENT_IDENTIFIER,
+  dplyr::select(OBSERVATION_DATE, OBSERVER_ID, LOCALITY_ID, SAMPLING_EVENT_IDENTIFIER,
          ALL_SPECIES_REPORTED, DURATION_MINUTES, EFFORT_DISTANCE_KM, LATITUDE, LONGITUDE,
          COUNTRY, COUNTY, STATE, PROTOCOL_TYPE) %>%
   distinct() %>%
