@@ -99,9 +99,11 @@ ABA_analysis$observers <- NULL
 ABA_analysis$first_observer_date <- NULL
 ABA_analysis$scale <- NULL
 
+## remove all object besides dataframes necessary
+rm(list=setdiff(ls(), c("ABA_analysis")))
 
-
-
+## save df as Rdata file
+save.image("Data/ABA_analysis_results.RData")
 
 
 
